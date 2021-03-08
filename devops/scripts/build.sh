@@ -1,20 +1,20 @@
 #!/bin/bash
 
-#INPUTS
+
 CI_PROJECT_DIR=$1
 COMMIT_SHA=$( git rev-parse HEAD )
 
-#DEFAULTS
-#Ignore Other Folders to Ignore During Build.
+
+
 ignore_list=("devops")
 
-# #Identify the Affected Lambdas
+
 mapfile -t lines < <(git diff-tree --no-commit-id --name-only -r "${COMMIT_SHA}" | grep ./ | cut -d/ -f1 | uniq )
 affected_folders=("$(printf '%s\n' "${lines[@]}" | sort -r)")
 echo "Affected Folders : ${affected_folders[*]}"
 
-#Testing
-#affected_folders=("lambda-B")
+
+
 echo "Affected Folders : ${affected_folders[*]}"
 
 build_all_lambdas=false
