@@ -5,7 +5,7 @@ Description: "CF Template for Lambda Functions"
 Parameters:
   S3Bucket:
     Type: String
-    Default: "projectx-lambdas"
+    Default: "testss3swamy"
     
 Resources:
   #IAM Role Required for Lambdas to function Properly
