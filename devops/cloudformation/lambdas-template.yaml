@@ -5,7 +5,7 @@ Description: "CF Template for Lambda Functions"
 Parameters:
   S3Bucket:
     Type: String
-    Default: "newbucketforlambda8"
+    Default: "swamytestbucket"
     
 Resources:
   #IAM Role Required for Lambdas to function Properly
