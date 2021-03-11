@@ -52,12 +52,6 @@ Resources:
       Timeout: 3
       Role:
         Fn::GetAtt: [LambdaRole, Arn]
-  version:
-    Type: AWS::Lambda::Version
-    Properties:
-      FunctionName: !Ref function
-      Description: v1
-      
   # Lambda B Function
   LambdaBFunction:
     Type: 'AWS::Lambda::Function'
@@ -76,6 +70,14 @@ Resources:
       Timeout: 3
       Role:
         Fn::GetAtt: [LambdaRole, Arn]
+   alias:
+     Type: AWS::Lambda::Alias
+     Properties:
+      FunctionName: !Ref function
+      FunctionVersion: !GetAtt newVersion.Version
+      Name: BLUE
+      ProvisionedConcurrencyConfig:
+        ProvisionedConcurrentExecutions: 20
 
   # Lambda C Function
   LambdaCFunction:
